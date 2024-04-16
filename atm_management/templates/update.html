@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update ATMSite</title>
+</head>
+<body>
+    <center>
+    <h2>Update ATMSite</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="update">  <!-- Hidden input for action -->
+        <table border="1"> <!-- Added border attribute to the table -->
+            <tr>
+                <td><label for="bid">Bid:</label></td>
+                <td><input type="text" id="bid" name="bid" value="{{ bid_obj.bid }}"></td>
+            </tr>
+            <tr>
+                <td><label for="bname">New Branchname:</label></td>
+                <td><input type="text" id="bname" name="new_bname" value="{{ item.bname }}"></td>
+            </tr>
+            <tr>
+                <td><label for="baddress">New Branch address:</label></td>
+                <td><input type="text" id="baddress" name="new_baddress" value="{{ item.baddress }}"></td>
+            </tr>
+            <tr>
+                <td><label for="persondetail">New Person Detail:</label></td>
+                <td><input type="text" id="persondetail" name="new_persondetail" placeholder="['name','phone','email']" value="{{ item.persondetail }}"></td>
+            </tr>
+            <tr>
+                <td><label for="city">New City:</label></td>
+                <td><input type="text" id="city" name="new_city" value="{{ item.city }}"></td>
+            </tr>
+            <tr>
+                <td><label for="state">New State:</label></td>
+                <td><input type="text" id="state" name="new_state" value="{{ item.state }}"></td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+    </center>
+</body>
+</html>
