@@ -15,6 +15,12 @@
         <button type="submit">Upload</button>
     </form>
     <center>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="text-align: center; font-weight: bold;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
     <h2>Data List</h2>
     <table border="1">
         <tr>
@@ -24,7 +30,6 @@
             <th>Person Detail</th>
             <th>City</th>
             <th>State</th>
-<!--            <th>Actions</th> &lt;!&ndash; Add a column for actions &ndash;&gt;-->
         </tr>
         {% for item in data_list %}
         <tr>

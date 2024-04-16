@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from atm_management.models import ATMSite, State, City
 from atm_management.forms import inputfile
 from openpyxl import load_workbook
+from django.contrib import messages
 
 
 def inputdata(request):
@@ -69,16 +70,23 @@ def update_item(request, bid):
         new_state = request.POST.get('new_state')
         new_city = request.POST.get('new_city')
 
-        state, created = State.objects.get_or_create(sname=new_state)
-        city, created = City.objects.get_or_create(cname=new_city, state=state)
-
-        bid_obj.bname = new_bname
-        bid_obj.baddress = new_baddress
-        bid_obj.persondetail = new_persondetail
-        bid_obj.state = state
-        bid_obj.city = city
+        # Check which data point to update
+        if new_bname:
+            bid_obj.bname = new_bname
+        elif new_baddress:
+            bid_obj.baddress = new_baddress
+        elif new_persondetail:
+            bid_obj.persondetail = new_persondetail
+        elif new_state:
+            state, created = State.objects.get_or_create(sname=new_state)
+            bid_obj.state = state
+        elif new_city:
+            state, created = State.objects.get_or_create(sname=new_state)
+            city, created = City.objects.get_or_create(cname=new_city, state=state)
+            bid_obj.city = city
 
         bid_obj.save()
+        messages.success(request, 'Updated Successfully')
         return redirect('inputdata')
     else:
         context = {'bid_obj': bid_obj}
