@@ -56,7 +56,11 @@ def delete_item(request, bid):
     return redirect('inputdata')
 
 def update_item(request, bid):
-    bid_obj = get_object_or_404(ATMSite, bid=bid)  # Fetch the ATMSite object based on bid
+    bid_objs = ATMSite.objects.filter(bid=bid)
+    if bid_objs.exists():
+        bid_obj = bid_objs.first()
+    else:
+        return render(request, "error.html", {"message": "ATMSite not found."})
 
     if request.method == "POST":
         new_bname = request.POST.get('new_bname')
