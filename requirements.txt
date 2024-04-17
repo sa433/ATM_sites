@@ -3,9 +3,7 @@ cffi==1.15.1
 cryptography==40.0.2
 Django==3.2.25
 et-xmlfile==1.1.0
-numpy==1.19.5
 openpyxl==3.1.2
-pandas==1.1.5
 protobuf==3.19.6
 pycparser==2.21
 PyMySQL==1.0.2
