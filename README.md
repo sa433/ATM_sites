@@ -1,7 +1,7 @@
 
 # ATM Sites Management using Django and Python
 
-This project facilitates the management of ATM sites through Django endpoints, allowing users to create, read, update, and delete ATM site details. The core entities in the project are the City, State, and ATMSite models, interconnected through foreign keys for seamless data organization. The database backend is MySQL for efficient data storage and retrieval.
+This project involves developing a Django application to manage ATM site data, allowing users to upload and manage site data via an Excel file and interface. The application includes models for ATMSite, State, and City, with fields for site name, site ID, address, and JSON-encoded contact details. Users can view detailed site information on web pages. The tech stack used is Python, Django, and MySQL.
 
 
 ## Getting Started
